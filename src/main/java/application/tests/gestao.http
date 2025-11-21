@@ -1,0 +1,47 @@
+@url = http://localhost:8080
+@auth = Basic admin 123456
+
+POST {{url}}/usuarios
+Content-Type: application/json
+
+{
+    "username": "professor",
+    "password": "123",
+    "role": "USER"
+}
+
+POST {{url}}/cursos
+Authorization: {{auth}}
+Content-Type: application/json
+
+{
+    "nome": "java spring boot",
+    "descricao": "Curso completo",
+    "cargaHoraria": 40,
+    "status": "ATIVO"
+}
+
+GET {{url}}/cursos
+Authorization: {{auth}}
+
+POST {{url}}/alunos
+Authorization: {{auth}}
+Content-Type: application/json
+
+{
+    "nome": "marcelo",
+    "email": "marcelo@email.com",
+    "telefone": "1199999999",
+    "dataMatricula": "2025-11-21"
+}
+
+POST {{url}}/matriculas
+Authorization: {{auth}}
+Content-Type: application/json
+
+{
+    "status": "ATIVA",
+    "dataMatricula": "2025-11-21",
+    "aluno": { "id": 1 },
+    "curso": { "id": 1 }
+}
